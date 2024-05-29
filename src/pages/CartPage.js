@@ -47,7 +47,7 @@ const CartPage = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("https://mernback-80ap.onrender.com/api/v1/product/braintree/token");
+      const { data } = await axios.get("/api/v1/product/braintree/token");
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -62,7 +62,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("https://mernback-80ap.onrender.com/api/v1/product/braintree/payment", {
+      const { data } = await axios.post("/api/v1/product/braintree/payment", {
         nonce,
         cart,
       });
@@ -99,7 +99,7 @@ const CartPage = () => {
               <div className="cart-item" key={p._id}>
                 <div className="col-md-4">
                   <img
-                    src={`https://mernback-80ap.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
@@ -130,7 +130,7 @@ const CartPage = () => {
                   <h5>{auth?.user?.address}</h5>
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate("https://mernback-80ap.onrender.com/dashboard/user/profile")}
+                    onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
@@ -141,7 +141,7 @@ const CartPage = () => {
                 {auth?.token ? (
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate("https://mernback-80ap.onrender.com/dashboard/user/profile")}
+                    onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
                   </button>

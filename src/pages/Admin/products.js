@@ -11,7 +11,7 @@ const Products = () => {
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("https://mernback-80ap.onrender.com/api/v1/product/get-product");
+      const { data } = await axios.get("/api/v1/product/get-product");
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -35,12 +35,12 @@ const Products = () => {
             {products?.map((p) => (
               <Link
                 key={p._id}
-                to={`https://mernback-80ap.onrender.com/dashboard/admin/product/${p.slug}`}
+                to={`/dashboard/admin/product/${p.slug}`}
                 className="product-link"
               >
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
-                    src={`https://mernback-80ap.onrender.com/api/v1/product/product-photo/${p._id}`}
+                    src={`/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />
